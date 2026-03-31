@@ -158,21 +158,6 @@
   .event-name { font-weight: 500; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
   .event-detail { font-size: 0.82rem; color: var(--text-soft); line-height: 1.7; }
   .event-location { font-size: 0.82rem; color: var(--text-soft); margin-top: 0.4rem; font-weight: 500; }
-  /* Styling für die klickbare Location */
-  .event-location-link { font-size: 0.82rem; color: var(--text-soft); margin-top: 0.4rem; font-weight: 500; }
-
-  .event-location-link:hover .event-location-link {
-    color: var(--terracotta);
-    text-decoration: underline;
-  }
-  /* Das "Externer Link" Symbol hinter dem Titel */
-  .event-location-link.has-link::after {
-    content: ' ↗';
-    font-size: 0.7rem;
-    opacity: 0.5;
-  }
-
-
   .event-note { font-size: 0.78rem; color: var(--text-soft); margin-top: 0.4rem; font-style: italic; }
   .option-link {
     display: inline-block;
@@ -240,6 +225,23 @@
 
   /* Das "Externer Link" Symbol hinter dem Titel */
   .event-name.has-link::after {
+    content: ' ↗';
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+    /* Styling für die klickbare Location */
+  .event-location-name { 
+    font-size: 0.82rem; 
+    color: var(--text-soft); 
+    margin-top: 0.4rem; 
+    font-weight: 500; }
+
+  .event-location-link:hover .event-location-name {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+  /* Das "Externer Link" Symbol hinter dem Titel */
+  .event-location-name.has-link::after {
     content: ' ↗';
     font-size: 0.7rem;
     opacity: 0.5;
@@ -346,7 +348,9 @@
       </a>
       <div class="event-detail">🕖 Uhrzeit: 19:30 Uhr</div>
       <div class="event-detail">🎟 Eintritt: kostenlos</div>
-      <a class="event-location-link" href="https://maps.app.goo.gl/RVCD5LavkLPK9yV76" target="_blank">📍 Nepomuk · Zschochersche Str. 57, 04229 Leipzig</a>
+      <a href="https://maps.app.goo.gl/RVCD5LavkLPK9yV76" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Nepomuk · Zschochersche Str. 57, 04229 Leipzig</div>
+      </a>
       <div class="event-note">Auch am Mi. 15.4. und Mi. 22.4. — regelmäßiger Quizabend</div>
     </div>
 
