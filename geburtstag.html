@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alles Gute zum Geburtstag!</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #fdf6ee;
+    --warm: #f5e6d3;
+    --blush: #e8c4b0;
+    --sage: #b8c9b0;
+    --sage-dark: #7a9e72;
+    --terracotta: #c4785a;
+    --text: #2c2418;
+    --text-soft: #6b5a4e;
+    --white: #ffffff;
+    --radius: 18px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .page { display: none; min-height: 100vh; padding: 2rem 1.5rem; animation: fadeIn 0.5s ease; }
+  .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  .deco-circle {
+    width: 260px; height: 260px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--sage));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    animation: floatBob 4s ease-in-out infinite;
+  }
+  @keyframes floatBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .deco-circle::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px dashed var(--blush);
+    opacity: 0.6;
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .deco-icon { font-size: 80px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+    line-height: 1.15;
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  h1 em { font-style: italic; color: var(--terracotta); }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--text-soft);
+    text-align: center;
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-main {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--terracotta);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(196, 120, 90, 0.35);
+  }
+  .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196, 120, 90, 0.45); }
+  .btn-main:active { transform: scale(0.98); }
+
+  .choice-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; max-width: 480px; margin-bottom: 2rem; }
+
+  .choice-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .choice-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+  .choice-card.kanu:hover { border-color: var(--sage-dark); }
+  .choice-card.quiz:hover { border-color: var(--terracotta); }
+
+  .card-icon { font-size: 3rem; margin-bottom: 0.8rem; display: block; }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .card-desc { font-size: 0.82rem; color: var(--text-soft); line-height: 1.5; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .section-intro { font-size: 0.95rem; color: var(--text-soft); text-align: center; margin-bottom: 2rem; max-width: 380px; }
+
+  .option-block {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--sage);
+  }
+  .option-block.warm { border-left-color: var(--blush); }
+
+  .option-title { font-weight: 500; font-size: 1rem; margin-bottom: 0.6rem; color: var(--text); }
+  .option-meta { font-size: 0.82rem; color: var(--text-soft); line-height: 1.6; }
+
+  .event-name { font-weight: 500; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+  .event-detail { font-size: 0.82rem; color: var(--text-soft); line-height: 1.7; }
+  .event-location { font-size: 0.82rem; color: var(--text-soft); margin-top: 0.4rem; font-weight: 500; }
+  .event-note { font-size: 0.78rem; color: var(--text-soft); margin-top: 0.4rem; font-style: italic; }
+  .option-link {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--terracotta);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--blush);
+    transition: color 0.2s;
+  }
+  .option-link:hover { color: var(--text); }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 100px;
+    background: var(--warm);
+    color: var(--terracotta);
+    margin-bottom: 0.5rem;
+  }
+
+  .back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .back-btn:hover { color: var(--text); }
+
+  .confetti-strip {
+    font-size: 1.6rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+    animation: shimmer 2s ease-in-out infinite alternate;
+  }
+  @keyframes shimmer { from { opacity: 0.7; } to { opacity: 1; } }
+
+  .scroll-area { width: 100%; max-width: 480px; overflow-y: auto; padding-bottom: 2rem; }
+
+  @media (max-width: 380px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: WELCOME -->
+<div class="page active" id="page1">
+  <div class="confetti-strip">🎂 🎀 🌸 🎈</div>
+  <div class="deco-circle">
+    <span class="deco-icon">🎁</span>
+  </div>
+  <h1>Alles Gute,<br><em>liebste Nashornfreundin!</em></h1>
+  <p class="subtitle">
+    Zeit ist das schönste Geschenk — und deshalb schenke ich dir genau das: Zeit mit mir. 
+    Such dir einfach aus, was wir zusammen erleben sollen. 💛
+  </p>
+  <button class="btn-main" onclick="showPage('page2')">Los geht's →</button>
+</div>
+
+<!-- PAGE 2: CHOICE -->
+<div class="page" id="page2">
+  <p class="choice-label">Was soll es sein?</p>
+  <h1 style="margin-bottom:0.5rem; font-size:2rem;">Wähl dein<br><em>Abenteuer</em></h1>
+  <p class="subtitle" style="margin-bottom:1.8rem;">Ich bin bei beidem dabei — du entscheidest!</p>
+  <div class="cards-grid">
+    <div class="choice-card kanu" onclick="showPage('pageKanu')">
+      <span class="card-icon">🛶</span>
+      <div class="card-title">Kanu&shy;tour</div>
+      <div class="card-desc">Raus auf's Wasser, frische Luft & Paddelabenteuer</div>
+    </div>
+    <div class="choice-card quiz" onclick="showPage('pageQuiz')">
+      <span class="card-icon">🎤</span>
+      <div class="card-title">Kneipen&shy;quiz</div>
+      <div class="card-desc">Fragen, Musik-Bingo & Spaß mit der besten Crew</div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="showPage('page1')">← zurück</button>
+</div>
+
+<!-- PAGE KANU -->
+<div class="page" id="pageKanu">
+  <div class="scroll-area">
+    <p class="choice-label" style="margin-top:1rem;">Du hast gewählt:</p>
+    <h1 class="section-title">🛶 Kanutour</h1>
+    <p class="section-intro">Wir müssen uns nur noch auf ein Datum einigen — meld dich einfach bei mir!</p>
+
+    <div class="option-block">
+      <span class="tag">Option 1</span>
+      <div class="event-name">2er Kajak</div>
+      <div class="event-detail">🚣 Nur wir zwei — gemeinsam paddeln, lachen, vielleicht leicht verirren</div>
+      <div class="event-location">📍 Bootsverleih Leipzig</div>
+      <a class="option-link" href="https://www.bootsverleih-leipzig.de/" target="_blank">→ bootsverleih-leipzig.de</a>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Option 2</span>
+      <div class="event-name">3er Canadier mit Maria</div>
+      <div class="event-detail">🚣 Mehr Crew, mehr Spaß, mehr Chaos — zusammen mit Maria</div>
+      <div class="event-location">📍 Bootsverleih Leipzig</div>
+      <a class="option-link" href="https://www.bootsverleih-leipzig.de/" target="_blank">→ bootsverleih-leipzig.de</a>
+    </div>
+
+    <button class="back-btn" onclick="showPage('page2')">← andere Wahl treffen</button>
+  </div>
+</div>
+
+<!-- PAGE QUIZ -->
+<div class="page" id="pageQuiz">
+  <div class="scroll-area">
+    <p class="choice-label" style="margin-top:1rem;">Du hast gewählt:</p>
+    <h1 class="section-title">🎤 Kneipenquiz</h1>
+    <p class="section-intro">Hier sind alle Termine — such dir deinen Lieblingsabend aus!</p>
+
+    <div class="option-block">
+      <span class="tag">Di. 8. April</span>
+      <div class="event-name">Nepomuk Quiznight</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+      <div class="event-note">Auch am Mi. 15.4. und Mi. 22.4. — regelmäßiger Quizabend</div>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Di. 8. April</span>
+      <div class="event-name">HIT HAPPENS – Song Bingo</div>
+      <div class="event-detail">🕖 19:00 – 21:30 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: 4 € pro Person</div>
+      <div class="event-location">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
+      <div class="event-note">Song hören, ankreuzen — Bingo! Reservierung empfohlen.</div>
+      <a class="option-link" href="https://www.dreidermünze.de" target="_blank">→ Drei der Münze</a>
+    </div>
+
+    <div class="option-block">
+      <span class="tag">Di. 14. April</span>
+      <div class="event-name">Liederlotto – Das Musikbingo</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+      <div class="event-note">Auch im Phat Chat Comedy Club am selben Abend</div>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Mi. 15. April</span>
+      <div class="event-name">Nepomuk Quiznight</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+    </div>
+
+    <div class="option-block">
+      <span class="tag">Do. 16. April</span>
+      <div class="event-name">FILMRISS Filmquiz</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Moritzbastei · Kurt-Masur-Platz 1, 04109 Leipzig</div>
+      <div class="event-note">Für alle Filmnerds 🎬</div>
+      <a class="option-link" href="https://www.moritzbastei.de/" target="_blank">→ moritzbastei.de</a>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Do. 16. April</span>
+      <div class="event-name">ExQUIZit – Comedy Kneipenquiz</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Phat Chat Comedy Club · Leipzig</div>
+      <div class="event-note">Läuft wahrscheinlich jeden Donnerstag. Auch am Do. 30.4.</div>
+    </div>
+
+    <div class="option-block">
+      <span class="tag">Mi. 22. April</span>
+      <div class="event-name">Nepomuk Quiznight</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Do. 23. April</span>
+      <div class="event-name">Soundcheck – Das Musikquiz</div>
+      <div class="event-detail">🕖 ab 19:00 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 StuK (Studentenkeller) · Zentrum-Südost, Leipzig</div>
+      <div class="event-note">Für Spielfreunde & Musikkenner. Auch Nicht-Studierende willkommen!</div>
+    </div>
+
+    <div class="option-block">
+      <span class="tag">Di. 28. April</span>
+      <div class="event-name">Moritzbastei Musikquiz</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Moritzbastei · Kurt-Masur-Platz 1, 04109 Leipzig</div>
+      <a class="option-link" href="https://www.moritzbastei.de/" target="_blank">→ moritzbastei.de</a>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Mi. 29. April</span>
+      <div class="event-name">Drei der Münze Bar-Quiz</div>
+      <div class="event-detail">🕖 19:00 – 21:30 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: 4 € pro Person</div>
+      <div class="event-location">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
+      <div class="event-note">Genreübergreifendes Quiz von Anja & Phylis. Reservierung empfohlen.</div>
+    </div>
+
+    <div class="option-block">
+      <span class="tag">Do. 30. April</span>
+      <div class="event-name">ExQUIZit – Comedy Kneipenquiz</div>
+      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
+      <div class="event-location">📍 Phat Chat Comedy Club · Leipzig</div>
+      <div class="event-note">Mit Comedy-Einlage! Läuft wahrscheinlich jeden Donnerstag.</div>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Do. 7. Mai</span>
+      <div class="event-name">Quizlabor</div>
+      <div class="event-detail">🕖 ab 19:00 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: nicht angegeben · Preis: ein praktischer Beutel!</div>
+      <div class="event-location">📍 StuK (Studentenkeller) · Zentrum-Südost, Leipzig</div>
+      <div class="event-note">3 Runden, kein Schulwissen — Unterhaltungswert garantiert. Jeden 1., 3. und 5. Donnerstag.</div>
+    </div>
+
+    <button class="back-btn" onclick="showPage('page2')">← andere Wahl treffen</button>
+  </div>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
