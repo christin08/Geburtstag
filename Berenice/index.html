@@ -210,6 +210,48 @@
   @media (max-width: 380px) {
     .cards-grid { grid-template-columns: 1fr; }
   }
+
+  /* Styling für die klickbaren Titel */
+  .event-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .event-link:hover .event-name {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+
+  /* Das "Externer Link" Symbol hinter dem Titel */
+  .event-name.has-link::after {
+    content: ' ↗';
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+
+  /* Der schicke Maps-Button */
+  .maps-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 15px;
+    background: var(--cream);
+    border: 1px solid var(--blush);
+    border-radius: 10px;
+    color: var(--terracotta);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .maps-button:hover {
+    background: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
 </style>
 </head>
 <body>
@@ -284,18 +326,37 @@
 
     <div class="option-block">
       <span class="tag">Di. 8. April</span>
+      <a href="https://rausgegangen.de/events/hit-happens-song-bingo-3/" target="_blank" class="event-link">
+        <div class="event-name has-link">HIT HAPPENS – Song Bingo</div>
+      </a>
       <div class="event-name">Nepomuk Quiznight</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+      <div class="event-detail">🕖 Uhrzeit: 19:30 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: kostenlos</div>
+      <div class="event-location">📍 Nepomuk · Zschochersche Str. 57, 04229 Leipzig</div>
+      <a href="https://maps.app.goo.gl/mEC9mDT2dvCdCSCq8" target="_blank" class="maps-button">
+        📍 Auf der Karte zeigen
+      </a>
+
+      <div class="event-detail">   </div>
+      <a class="option-link" href="https://maps.app.goo.gl/RVCD5LavkLPK9yV76" target="_blank">📍 Nepomuk · Zschochersche Str. 57, 04229 Leipzig</a>
+      <div class="event-detail">   </div>
+      <a href="https://maps.app.goo.gl/RVCD5LavkLPK9yV76" target="_blank" style="text-decoration: none;">
+        <div style="background: var(--warm); padding: 10px; border-radius: 12px; display: flex; align-items: center; gap: 10px; margin-top: 10px; border: 1px solid var(--blush);">
+          <span style="font-size: 1.2rem;">📍</span>
+          <span style="font-size: 0.85rem; color: var(--terracotta); font-weight: bold;">In Google Maps öffnen</span>
+        </div>
+      </a>
+      
       <div class="event-note">Auch am Mi. 15.4. und Mi. 22.4. — regelmäßiger Quizabend</div>
+      <a class="option-link" href="https://www.dreidermünze.de" target="_blank">→ Drei der Münze</a>
     </div>
 
     <div class="option-block warm">
       <span class="tag">Di. 8. April</span>
       <div class="event-name">HIT HAPPENS – Song Bingo</div>
       <div class="event-detail">🕖 19:00 – 21:30 Uhr</div>
-      <div class="event-detail">🎟 Eintritt: 4 € pro Person</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <!-- <div class="event-detail">🎟 Eintritt: 4 € pro Person</div> -->
       <div class="event-location">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
       <div class="event-note">Song hören, ankreuzen — Bingo! Reservierung empfohlen.</div>
       <a class="option-link" href="https://www.dreidermünze.de" target="_blank">→ Drei der Münze</a>
