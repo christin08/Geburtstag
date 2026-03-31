@@ -210,6 +210,66 @@
   @media (max-width: 380px) {
     .cards-grid { grid-template-columns: 1fr; }
   }
+
+  /* Styling für die klickbaren Titel */
+  .event-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .event-link:hover .event-name {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+
+  /* Das "Externer Link" Symbol hinter dem Titel */
+  .event-name.has-link::after {
+    content: ' ↗';
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+    /* Styling für die klickbare Location */
+  .event-location-name { 
+    text-decoration: none;
+    font-size: 0.82rem; 
+    color: var(--text-soft); 
+    margin-top: 0.4rem; 
+    font-weight: 500; }
+
+  .event-location-link:hover .event-location-name {
+    color: var(--terracotta);
+    text-decoration: underline;
+  }
+  /* Das "Externer Link" Symbol hinter dem Titel */
+  .event-location-name.has-link::after {
+    content: ' ↗';
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+
+  /* Der schicke Maps-Button */
+  .maps-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 15px;
+    background: var(--cream);
+    border: 1px solid var(--blush);
+    border-radius: 10px;
+    color: var(--terracotta);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .maps-button:hover {
+    background: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
 </style>
 </head>
 <body>
@@ -220,7 +280,7 @@
   <div class="deco-circle">
     <span class="deco-icon">🎁</span>
   </div>
-  <h1>Alles Gute,<br><em>liebste Maria!</em></h1>
+  <h1>Alles Gute,<br><em>liebste SkyMary!</em></h1>
   <p class="subtitle">
     Zeit ist das schönste Geschenk — und deshalb schenke ich dir genau das: Zeit mit mir. 
     Such dir einfach aus, was wir zusammen erleben sollen. 💛
@@ -284,110 +344,130 @@
 
     <div class="option-block">
       <span class="tag">Di. 8. April</span>
-      <div class="event-name">Nepomuk Quiznight</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+      <a href="https://www.quizlabor.de/events/Nepomuk-Quiznight-101_2767" target="_blank" class="event-link">
+        <div class="event-name has-link">Nepomuk Quiznight</div>
+      </a>
+      <div class="event-detail">🕖 Uhrzeit: 19:30 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: kostenlos</div>
+      <a href="https://maps.app.goo.gl/RVCD5LavkLPK9yV76" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Nepomuk · Zschochersche Str. 57, 04229 Leipzig</div>
+      </a>
       <div class="event-note">Auch am Mi. 15.4. und Mi. 22.4. — regelmäßiger Quizabend</div>
     </div>
 
     <div class="option-block warm">
       <span class="tag">Di. 8. April</span>
-      <div class="event-name">HIT HAPPENS – Song Bingo</div>
+      <a href="https://rausgegangen.de/events/hit-happens-song-bingo-3/" target="_blank" class="event-link">
+        <div class="event-name has-link">HIT HAPPENS – Song Bingo</div>
+      </a>
       <div class="event-detail">🕖 19:00 – 21:30 Uhr</div>
-      <div class="event-detail">🎟 Eintritt: 4 € pro Person</div>
-      <div class="event-location">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/jKzcUx5aZSTxRuaW7" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
+      </a>
       <div class="event-note">Song hören, ankreuzen — Bingo! Reservierung empfohlen.</div>
-      <a class="option-link" href="https://www.dreidermünze.de" target="_blank">→ Drei der Münze</a>
     </div>
 
     <div class="option-block">
       <span class="tag">Di. 14. April</span>
-      <div class="event-name">Liederlotto – Das Musikbingo</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
-      <div class="event-note">Auch im Phat Chat Comedy Club am selben Abend</div>
-    </div>
-
-    <div class="option-block warm">
-      <span class="tag">Mi. 15. April</span>
-      <div class="event-name">Nepomuk Quiznight</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+      <a href="https://www.quizlabor.de/events/liederlotto-das-musikbingo_2765" target="_blank" class="event-link">
+        <div class="event-name has-link">Liederlotto – Das Musikbingo</div>
+      </a>
+      <div class="event-detail">🕖 Uhrzeit: 19:00 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/RVCD5LavkLPK9yV76" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Nepomuk · Zschochersche Str. 57, 04229 Leipzig</div>
+      </a>
+      <div class="event-note">Der Bingoabend besteht aus drei unterschiedlichen Runden und das Thema des Abends werden Hits mit Namen, Tieren oder Berufen im Titel und Bandnamen!</div>
     </div>
 
     <div class="option-block">
       <span class="tag">Do. 16. April</span>
-      <div class="event-name">FILMRISS Filmquiz</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Moritzbastei · Kurt-Masur-Platz 1, 04109 Leipzig</div>
-      <div class="event-note">Für alle Filmnerds 🎬</div>
-      <a class="option-link" href="https://www.moritzbastei.de/" target="_blank">→ moritzbastei.de</a>
+      <a href="https://www.moritzbastei.de/event/special/2026-04-16/filmriss-filmquiz-april-2026" target="_blank" class="event-link">
+        <div class="event-name has-link">FILMRISS Filmquiz</div>
+      </a>
+      <div class="event-detail">🕖 Uhrzeit: 20:00</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/GgqxZ5ZmDRd4EvuD8" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Moritzbastei · Kurt-Masur-Platz 1, 04109 Leipzig</div>
+      </a>
+      <div class="event-note">Wie viele Cameos hatte Marvel-Meister Stan Lee? Wann wurde der erste Tonfilm uraufgeführt? Welche Horrorserie kommt auf die meisten mörderischen Auftritte? Die beliebte Rateshow rund ums Thema Film mit frischen Fragen, Filmausschnitten und Spielen und natürlich reichlich Preisen zu aktuellen Kinoproduktionen. 🎬</div>
     </div>
 
     <div class="option-block warm">
       <span class="tag">Do. 16. April</span>
-      <div class="event-name">ExQUIZit – Comedy Kneipenquiz</div>
+      <a href="https://rausgegangen.de/events/exquizit-das-comedy-kneipenquiz-0/" target="_blank" class="event-link">
+        <div class="event-name has-link">ExQUIZit – Comedy Kneipenquiz</div>
+      </a>
       <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Phat Chat Comedy Club · Leipzig</div>
-      <div class="event-note">Läuft wahrscheinlich jeden Donnerstag. Auch am Do. 30.4.</div>
-    </div>
-
-    <div class="option-block">
-      <span class="tag">Mi. 22. April</span>
-      <div class="event-name">Nepomuk Quiznight</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Nepomuk · Karl-Liebknecht-Str. 36, 04107 Leipzig</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/fL8UK2Ag9eTNPbWh6" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Phat Chat Comedy Club · Barfußgäßchen 12, 04109 Leipzig</div>
+      </a>
+      <div class="event-note">Läuft wahrscheinlich jeden Donnerstag.</div>
     </div>
 
     <div class="option-block warm">
       <span class="tag">Do. 23. April</span>
-      <div class="event-name">Soundcheck – Das Musikquiz</div>
-      <div class="event-detail">🕖 ab 19:00 Uhr</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 StuK (Studentenkeller) · Zentrum-Südost, Leipzig</div>
+      <a href="https://www.quizlabor.de/events/SOUNDCHECK-No-47-Leipzig_2774" target="_blank" class="event-link">
+        <div class="event-name has-link">Soundcheck – Das Musikquiz</div>
+      </a>
+      <div class="event-detail">🕖 ab 19:30 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/G59fkXyhcs1fJmhT6" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 StuK (Studentenkeller) · Nürnberger Str. 42, 04103 Leipzig</div>
+      </a>
       <div class="event-note">Für Spielfreunde & Musikkenner. Auch Nicht-Studierende willkommen!</div>
+      <a class="option-link" href="https://www.tiktok.com/@carolain_doh/video/7543512798253387030" target="_blank">Das hat mich überzeugt 😁</a>
     </div>
 
     <div class="option-block">
       <span class="tag">Di. 28. April</span>
-      <div class="event-name">Moritzbastei Musikquiz</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Moritzbastei · Kurt-Masur-Platz 1, 04109 Leipzig</div>
-      <a class="option-link" href="https://www.moritzbastei.de/" target="_blank">→ moritzbastei.de</a>
+      <a href="https://www.moritzbastei.de/event/special/2025-11-11/das-moritzbastei-musikquiz-7-2-2-2-2-2" target="_blank" class="event-link">
+        <div class="event-name has-link">Moritzbastei Musikquiz</div>
+      </a>
+      <div class="event-detail">🕖 Uhrzeit: 20:00</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/GgqxZ5ZmDRd4EvuD8" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Moritzbastei · Kurt-Masur-Platz 1, 04109 Leipzig</div>
+      </a>
+      <div class="event-note">Dein Spotify ist dein Heiligtum? Du bist die menschliche Version von Shazam? Deine Hitster-Rate-Quote liegt bei 100 Prozent? Dann bist du genau richtig beim Moritzbastei Musikquiz!</div>
     </div>
 
     <div class="option-block warm">
       <span class="tag">Mi. 29. April</span>
-      <div class="event-name">Drei der Münze Bar-Quiz</div>
-      <div class="event-detail">🕖 19:00 – 21:30 Uhr</div>
-      <div class="event-detail">🎟 Eintritt: 4 € pro Person</div>
-      <div class="event-location">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
-      <div class="event-note">Genreübergreifendes Quiz von Anja & Phylis. Reservierung empfohlen.</div>
-    </div>
-
-    <div class="option-block">
-      <span class="tag">Do. 30. April</span>
-      <div class="event-name">ExQUIZit – Comedy Kneipenquiz</div>
-      <div class="event-detail">🕖 Uhrzeit: auf Anfrage</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben</div>
-      <div class="event-location">📍 Phat Chat Comedy Club · Leipzig</div>
-      <div class="event-note">Mit Comedy-Einlage! Läuft wahrscheinlich jeden Donnerstag.</div>
+      <a href="https://rausgegangen.de/events/drei-der-munze-bar-quiz-22/" target="_blank" class="event-link">
+        <div class="event-name has-link">Drei der Münze Bar-Quiz</div>
+      </a>
+      <div class="event-detail">🕖 Uhrzeit: nicht angegeben</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/jKzcUx5aZSTxRuaW7" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 Drei der Münze · Münzgasse 28, 04109 Leipzig</div>
+      </a>
+      <div class="event-note">Bei unserem monatlichen Bar-Quiz verzaubert euch die charmante Quiz-Miss Phylis und bringt euch mit ihren Fragen ins Grübeln. Die Fragen reichen von Allgemeinwissen, über gemalte Kellnerblock-Skizzen bishin zur berüchtigten Playlist-Frage, bei der man die Gemeinsamkeit der Lieder herausarbeiten muss.</div>
     </div>
 
     <div class="option-block warm">
       <span class="tag">Do. 7. Mai</span>
       <div class="event-name">Quizlabor</div>
       <div class="event-detail">🕖 ab 19:00 Uhr</div>
-      <div class="event-detail">🎟 Eintritt: nicht angegeben · Preis: ein praktischer Beutel!</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
       <div class="event-location">📍 StuK (Studentenkeller) · Zentrum-Südost, Leipzig</div>
       <div class="event-note">3 Runden, kein Schulwissen — Unterhaltungswert garantiert. Jeden 1., 3. und 5. Donnerstag.</div>
+    </div>
+
+    <div class="option-block warm">
+      <span class="tag">Do. 7. Mai</span>
+      <a href="https://www.quizlabor.de/events/_2683" target="_blank" class="event-link">
+        <div class="event-name has-link">Quizlabor</div>
+      </a>
+      <div class="event-detail">🕖 ab 19:30 Uhr</div>
+      <div class="event-detail">🎟 Eintritt: für dich kostenlos ♥</div>
+      <a href="https://maps.app.goo.gl/G59fkXyhcs1fJmhT6" target="_blank" class="event-location-link">
+        <div class="event-location-name has-link">📍 StuK (Studentenkeller) · Nürnberger Str. 42, 04103 Leipzig</div>
+      </a>
+      <div class="event-note">📵 Handys, Smartphones, oder anderer Schnickschnack sind während der Fragerunden untersagt!</div>
+      <a class="option-link" href="https://www.tiktok.com/@carolain_doh/video/7543512798253387030" target="_blank">Das hat mich überzeugt 😁</a>
     </div>
 
     <button class="back-btn" onclick="showPage('page2')">← andere Wahl treffen</button>
