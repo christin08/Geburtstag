@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Jonas 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --g: #2d6a4f;
+  --g2: #52b788;
+  --g3: #d8f3dc;
+  --y: #f4c430;
+  --y2: #fff9e6;
+  --o: #e07b39;
+  --ink: #111;
+  --ink2: #666;
+  --bg: #f7f5ef;
+  --white: #fff;
+  --r: 16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.screen {
+  display: none;
+  min-height: 100dvh;
+  padding: 2rem 1.4rem 3rem;
+  flex-direction: column;
+  align-items: center;
+  animation: rise .55s cubic-bezier(.22,1,.36,1);
+}
+.screen.on { display: flex; }
+@keyframes rise { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+
+.progress {
+  width: 100%; max-width: 420px;
+  display: flex; gap: 6px;
+  margin-bottom: 2.5rem;
+}
+.prog-seg {
+  flex: 1; height: 3px; border-radius: 99px;
+  background: #ddd; transition: background .4s;
+}
+.prog-seg.done { background: var(--g); }
+.prog-seg.active { background: var(--y); }
+
+.eyebrow {
+  font-size: .7rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink2); margin-bottom: .6rem;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3.2rem, 12vw, 5.5rem);
+  font-weight: 700; line-height: .95;
+  text-align: center; margin-bottom: 1rem;
+}
+h1 .acc { color: var(--o); font-style: italic; }
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+  font-weight: 700; line-height: 1.05;
+  text-align: center; margin-bottom: .5rem;
+}
+h2 em { color: var(--g); font-style: italic; }
+
+.lead {
+  font-size: .93rem; color: var(--ink2);
+  line-height: 1.8; text-align: center;
+  max-width: 340px; margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: .85rem 2rem; border: none; border-radius: 99px;
+  font-family: 'Inter', sans-serif; font-size: .88rem; font-weight: 500;
+  cursor: pointer; transition: transform .18s, box-shadow .18s;
+}
+.btn:active { transform: scale(.97); }
+.btn-dark { background: var(--ink); color: var(--white); }
+.btn-dark:hover { box-shadow: 0 8px 24px rgba(0,0,0,.22); transform: translateY(-2px); }
+.btn-green { background: var(--g); color: var(--white); }
+.btn-green:hover { box-shadow: 0 8px 24px rgba(45,106,79,.35); transform: translateY(-2px); }
+.btn-ghost {
+  background: none; border: 1.5px solid #ccc;
+  color: var(--ink2); font-family: 'Inter', sans-serif;
+  font-size: .8rem; cursor: pointer; padding: .6rem 1.4rem;
+  border-radius: 99px; margin-top: .8rem;
+  transition: border-color .2s;
+}
+.btn-ghost:hover { border-color: var(--ink2); }
+
+/* ── SCREEN 1 ── */
+.hero-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(8rem, 32vw, 14rem);
+  font-weight: 700; line-height: 1;
+  color: var(--g3);
+  -webkit-text-stroke: 2.5px var(--g2);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -.4rem;
+}
+.hero-num .fill {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--g3); -webkit-text-stroke: 0;
+  font-size: inherit;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(.22,1,.36,1) .2s;
+}
+.hero-num.go .fill { clip-path: inset(0% 0 0 0); }
+
+.pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 1.2rem 0 2rem; }
+.pill {
+  padding: .4rem 1rem; border-radius: 99px;
+  font-size: .75rem; font-weight: 500;
+  background: var(--white); border: 1.5px solid #e8e8e8; color: var(--ink2);
+  animation: pop .4s cubic-bezier(.34,1.56,.64,1) both;
+}
+.pill:nth-child(1){animation-delay:.1s}
+.pill:nth-child(2){animation-delay:.22s}
+.pill:nth-child(3){animation-delay:.34s}
+@keyframes pop { from{transform:scale(0) rotate(-8deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+
+/* envelope */
+.env-wrap { width:100%; max-width:400px; cursor:pointer; margin:.4rem 0 1.4rem; }
+.env-card {
+  background: var(--white); border-radius: var(--r);
+  border: 1.5px solid #e5e5e5; overflow: hidden;
+  transition: transform .22s, box-shadow .22s;
+}
+.env-card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.09); }
+.env-top {
+  background: var(--y); padding: 1.8rem 1.5rem 2.2rem;
+  text-align: center; position: relative;
+}
+.env-top::after {
+  content:''; position:absolute; bottom:-18px; left:0; right:0;
+  border-left: calc(50vw) solid transparent;
+  border-right: calc(50vw) solid transparent;
+  border-top: 22px solid var(--y);
+}
+.env-ico { font-size:2.8rem; display:block; margin-bottom:.3rem; }
+.env-lbl { font-family:'Fraunces',serif; font-style:italic; font-size:1.05rem; color:var(--ink); }
+.env-bot { padding:2.4rem 1.5rem 1.2rem; text-align:center; }
+.env-hint { font-size:.74rem; color:var(--ink2); }
+
+.letter {
+  background: var(--white); border-radius: var(--r);
+  border: 1.5px solid #e5e5e5;
+  border-top: 4px solid var(--g);
+  padding: 1.8rem; width:100%; max-width:400px;
+  margin-bottom:1.4rem; display:none;
+  animation: lopen .45s cubic-bezier(.22,1,.36,1);
+}
+.letter.open { display:block; }
+@keyframes lopen { from{transform:scale(.88) translateY(14px);opacity:0} to{transform:scale(1) translateY(0);opacity:1} }
+.l-date { font-size:.68rem; color:#bbb; margin-bottom:.8rem; }
+.l-body { font-size:.9rem; line-height:1.9; color:var(--ink2); }
+.l-body strong { color:var(--ink); font-weight:500; }
+.l-sig { font-family:'Fraunces',serif; font-style:italic; font-size:1.2rem; color:var(--o); margin-top:1.2rem; }
+.l-close { background:none; border:none; font-size:.72rem; color:#bbb; cursor:pointer; margin-top:.6rem; font-family:'Inter',sans-serif; }
+.l-close:hover { color:var(--ink2); }
+
+/* ── SCREEN 2 ── */
+.house { font-size:4.5rem; display:block; text-align:center; margin-bottom:1rem; animation:hwav 3.5s ease-in-out infinite; }
+@keyframes hwav { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg) scale(1.05)} }
+
+.tiles { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; width:100%; max-width:420px; margin-bottom:1.4rem; }
+.tile {
+  background:var(--white); border-radius:14px; padding:1rem;
+  border:1.5px solid #efefef; transition:transform .2s;
+}
+.tile:hover { transform:translateY(-2px); }
+.t-ico { font-size:1.7rem; margin-bottom:.35rem; display:block; }
+.t-title { font-size:.8rem; font-weight:500; color:var(--ink); margin-bottom:.15rem; }
+.t-sub { font-size:.72rem; color:var(--ink2); line-height:1.4; }
+
+.qblock {
+  width:100%; max-width:420px;
+  border-left:3px solid var(--g2);
+  padding:.9rem 1.1rem;
+  background:var(--white); border-radius:0 12px 12px 0;
+  margin-bottom:1.5rem;
+}
+.qblock p { font-family:'Fraunces',serif; font-style:italic; font-size:1rem; color:var(--ink); line-height:1.6; }
+.qblock span { font-size:.7rem; color:var(--ink2); margin-top:.25rem; display:block; }
+
+/* ── SCREEN 3 ── */
+.dests { width:100%; max-width:420px; display:flex; flex-direction:column; gap:.75rem; margin-bottom:1.6rem; }
+.dest {
+  background:var(--white); border-radius:var(--r); padding:1.1rem 1.3rem;
+  display:flex; align-items:center; gap:.9rem;
+  border:1.5px solid #efefef;
+}
+.d-ico { font-size:2rem; flex-shrink:0; }
+.d-name { font-family:'Fraunces',serif; font-size:1.05rem; color:var(--ink); margin-bottom:.12rem; }
+.d-sub { font-size:.75rem; color:var(--ink2); line-height:1.45; }
+.d-tag {
+  margin-left:auto; flex-shrink:0;
+  background:var(--g3); color:var(--g);
+  font-size:.65rem; font-weight:500;
+  padding:.22rem .65rem; border-radius:99px;
+}
+.dest:nth-child(2) .d-tag { background:var(--y2); color:#8a6800; }
+
+.sky {
+  width:100%; max-width:420px; height:115px;
+  border-radius:var(--r);
+  background:linear-gradient(160deg,#cce8f7,#edf6ff);
+  border:1.5px solid #b8daed;
+  position:relative; overflow:hidden; margin-bottom:1.1rem;
+}
+.cld { position:absolute; font-size:1.5rem; opacity:.4; top:var(--t,12px); left:-60px; animation:cld var(--s,14s) linear infinite var(--d,0s); }
+@keyframes cld { to{left:110%;} }
+.plane { position:absolute; font-size:2rem; left:-60px; bottom:28px; filter:drop-shadow(0 2px 5px rgba(0,0,0,.1)); }
+.plane.soar { animation:soar 3s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes soar {
+  0%{left:-60px;bottom:28px;transform:rotate(0);opacity:1}
+  55%{left:50%;bottom:48px;transform:rotate(-10deg);opacity:1}
+  85%{left:90%;bottom:68px;transform:rotate(-15deg);opacity:.8}
+  100%{left:115%;bottom:88px;transform:rotate(-18deg);opacity:0}
+}
+
+.fly-lbl {
+  text-align:center; font-size:.8rem; color:var(--g);
+  font-weight:500; min-height:1.2rem; margin-top:.45rem;
+  opacity:0; transition:opacity .6s;
+}
+.fly-lbl.show { opacity:1; }
+
+.final {
+  width:100%; max-width:420px;
+  background:var(--ink); border-radius:var(--r);
+  padding:1.8rem; text-align:center; margin-top:1.6rem;
+}
+.final .big { font-family:'Fraunces',serif; font-style:italic; font-size:1.25rem; color:var(--white); margin-bottom:.5rem; display:block; }
+.final p { color:#999; font-size:.84rem; line-height:1.8; }
+
+@media(max-width:360px){ .tiles{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<!-- ══ S1 ══ -->
+<div class="screen on" id="s1">
+  <div class="progress">
+    <div class="prog-seg active"></div>
+    <div class="prog-seg"></div>
+    <div class="prog-seg"></div>
+  </div>
+
+  <div class="eyebrow">10. April 2025</div>
+
+  <div class="hero-num" id="hn">26<span class="fill">26</span></div>
+
+  <h1>Happy<br>Birthday,<br><span class="acc">Jonas.</span></h1>
+
+  <div class="pills">
+    <span class="pill">🌻 Geburtstagskind</span>
+    <span class="pill">⚽ Fußballer</span>
+    <span class="pill">💚 meiner</span>
+  </div>
+
+  <p class="lead">Heute bist du dran — kein Training, kein Wecker. Nur du, dein Kuchen 🎂 und ich.</p>
+
+  <div class="env-wrap" id="envW" onclick="openLetter()">
+    <div class="env-card">
+      <div class="env-top">
+        <span class="env-ico">✉️</span>
+        <div class="env-lbl">Ein Brief für dich</div>
+      </div>
+      <div class="env-bot">
+        <div class="env-hint">Tippen zum Öffnen 💛</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter" id="ltr">
+    <div class="l-date">Leipzig, 10. April 2025</div>
+    <div class="l-body">
+      Mein lieber Jonas,<br><br>
+      heute wirst du <strong>26</strong> — und ich bin so unendlich froh, dass ich diesen Tag mit dir feiern darf. 🎉<br><br>
+      Seit dem <strong>22. November</strong> bist du meiner und ich bin deine. Seitdem ist alles ein kleines bisschen besser, lustiger, wärmer. Du machst mein Leben <strong>bunter</strong> — einfach schöner.<br><br>
+      Ich wünsche dir einen Tag, der genauso besonders ist wie du. Viel Liebe, viel Kuchen, alles was du dir wünschst. 🌻
+    </div>
+    <div class="l-sig">In Liebe, deine Christin ❤️</div>
+    <button class="l-close" onclick="closeLetter(event)">Brief schließen ✕</button>
+  </div>
+
+  <button class="btn btn-dark" onclick="go(2)">Weiter →</button>
+</div>
+
+
+<!-- ══ S2 ══ -->
+<div class="screen" id="s2">
+  <div class="progress">
+    <div class="prog-seg done"></div>
+    <div class="prog-seg active"></div>
+    <div class="prog-seg"></div>
+  </div>
+
+  <span class="house">🏡</span>
+  <h2>Unser kleines<br><em>Zuhause</em></h2>
+  <p class="lead">Seit Januar wohnen wir zusammen. Noch nicht alles perfekt eingerichtet — aber mit dir ist es einfach perfekt.</p>
+
+  <div class="tiles">
+    <div class="tile"><span class="t-ico">📦</span><div class="t-title">Einzug Januar</div><div class="t-sub">Kisten schleppen war noch nie so schön</div></div>
+    <div class="tile"><span class="t-ico">☕</span><div class="t-title">Morgens zusammen</div><div class="t-sub">Kaffee schmeckt besser, wenn du daneben sitzt</div></div>
+    <div class="tile"><span class="t-ico">🛋️</span><div class="t-title">Work in Progress</div><div class="t-sub">Noch nicht fertig — aber wir haben Zeit</div></div>
+    <div class="tile"><span class="t-ico">⚽</span><div class="t-title">Heimspiele</div><div class="t-sub">Auch wenn du den Ball schon im Flur übst 😄</div></div>
+  </div>
+
+  <div class="qblock">
+    <p>"Home is wherever I'm with you."</p>
+    <span>— und das stimmt. Wirklich.</span>
+  </div>
+
+  <button class="btn btn-green" onclick="go(3)">Zu unseren Abenteuern →</button>
+  <button class="btn-ghost" onclick="go(1)">← zurück</button>
+</div>
+
+
+<!-- ══ S3 ══ -->
+<div class="screen" id="s3">
+  <div class="progress">
+    <div class="prog-seg done"></div>
+    <div class="prog-seg done"></div>
+    <div class="prog-seg active"></div>
+  </div>
+
+  <div class="eyebrow">Was uns erwartet</div>
+  <h2>Auf zu<br><em>Abenteuern</em></h2>
+  <p class="lead">Ich freu mich so sehr auf dieses Jahr mit dir — auf jeden Urlaub, jeden Sonnenuntergang, jeden Moment. ✈️</p>
+
+  <div class="dests">
+    <div class="dest">
+      <div class="d-ico">🏖️</div>
+      <div><div class="d-name">Kreta</div><div class="d-sub">Eine Woche Sonne, Meer & Olivenbäume 🫒<br>Mai 2025</div></div>
+      <div class="d-tag">Bald!</div>
+    </div>
+    <div class="dest">
+      <div class="d-ico">🌍</div>
+      <div><div class="d-name">Großes Abenteuer</div><div class="d-sub">Ein anderer Kontinent — wohin, entscheiden wir zusammen 🗺️</div></div>
+      <div class="d-tag">2025</div>
+    </div>
+  </div>
+
+  <div class="sky">
+    <div class="cld" style="--t:10px;--s:16s;--d:0s;">☁️</div>
+    <div class="cld" style="--t:50px;--s:11s;--d:-5s;font-size:1rem;opacity:.28;">☁️</div>
+    <div class="plane" id="plane">✈️</div>
+  </div>
+
+  <button class="btn btn-dark" id="flyBtn" onclick="fly()">Freust du dich schon? 🛫</button>
+  <div class="fly-lbl" id="flyLbl">Wir fliegen! Ab ins Abenteuer — mit dir! 🌍💛</div>
+
+  <div class="final">
+    <span class="big">Alles Gute zum Geburtstag, Jonas. 🎂</span>
+    <p>Ich bin so glücklich, dieses Leben mit dir zu teilen — all die kleinen Tage zuhause und die großen Abenteuer irgendwo auf der Welt. Auf noch viele davon. 🌻</p>
+  </div>
+
+  <button class="btn-ghost" onclick="go(2)" style="margin-top:1rem;">← zurück</button>
+</div>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('hn').classList.add('go'), 300));
+
+function go(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
+  document.getElementById('s'+n).classList.add('on');
+  window.scrollTo(0,0);
+  if (n===1) resetLetter();
+  resetPlane();
+}
+
+function openLetter() {
+  if (document.getElementById('ltr').classList.contains('open')) return;
+  document.getElementById('envW').style.display = 'none';
+  document.getElementById('ltr').classList.add('open');
+}
+function closeLetter(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('envW').style.display = 'block';
+  document.getElementById('ltr').classList.remove('open');
+}
+function resetLetter() {
+  document.getElementById('envW').style.display = 'block';
+  document.getElementById('ltr').classList.remove('open');
+}
+
+let flying = false;
+function fly() {
+  const plane = document.getElementById('plane');
+  const btn = document.getElementById('flyBtn');
+  const lbl = document.getElementById('flyLbl');
+  if (flying) { resetPlane(); return; }
+  flying = true;
+  plane.classList.add('soar');
+  btn.disabled = true;
+  setTimeout(() => {
+    lbl.classList.add('show');
+    btn.disabled = false;
+    btn.textContent = 'Nochmal fliegen! ✈️';
+    flying = false;
+  }, 2700);
+}
+function resetPlane() {
+  const plane = document.getElementById('plane');
+  plane.classList.remove('soar');
+  void plane.offsetWidth;
+  document.getElementById('flyLbl').classList.remove('show');
+  const btn = document.getElementById('flyBtn');
+  if (btn) btn.textContent = 'Freust du dich schon? 🛫';
+  flying = false;
+}
+</script>
+</body>
+</html>
