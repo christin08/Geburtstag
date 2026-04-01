@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Alles Gute zum 26. Geburtstag!</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff9f5;
+    --primary: #d4a373; /* Gold-Ton */
+    --secondary: #e63946; /* Herz-Rot */
+    --text: #4a4a4a;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  .page {
+    display: none;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .page.active { display: flex; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--text); }
+  h2 { font-family: 'Playfair Display', serif; color: var(--secondary); margin-bottom: 1rem; }
+
+  /* BRIEF ANIMATION */
+  .envelope-wrapper {
+    position: relative;
+    width: 280px; height: 180px;
+    background: #f1dca7;
+    margin: 2rem auto;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .envelope-wrapper:active { transform: scale(0.95); }
+  
+  .envelope-flap {
+    position: absolute; top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid #d4a373;
+    z-index: 3; transition: transform 0.4s ease;
+    transform-origin: top;
+  }
+  
+  .letter {
+    position: absolute; bottom: 10px; left: 10px;
+    width: 260px; height: 160px;
+    background: white;
+    z-index: 2; padding: 1rem;
+    transition: transform 0.5s ease;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-style: italic;
+  }
+
+  .open .envelope-flap { transform: rotateX(180deg); }
+  .open .letter { transform: translateY(-100px); z-index: 4; height: auto; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+  /* BUTTONS */
+  .btn-next {
+    background: var(--primary);
+    color: white; border: none; padding: 1rem 2rem;
+    border-radius: 50px; font-size: 1.1rem; margin-top: 2rem;
+    cursor: pointer; box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+  }
+
+  /* WOHNUNG SEKTION */
+  .home-box {
+    background: white; padding: 2rem; border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 400px;
+  }
+  .heart-float { color: var(--secondary); animation: pulse 1.5s infinite; font-size: 2rem; }
+  @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+  /* FLUGZEUG ANIMATION */
+  #airplane {
+    position: absolute; font-size: 3rem;
+    left: -100px; bottom: 20%;
+    transition: all 3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    z-index: 10; pointer-events: none; opacity: 0;
+  }
+  .fly #airplane {
+    left: 120%; bottom: 80%; opacity: 1; transform: rotate(-20deg);
+  }
+
+  .cloud { position: absolute; opacity: 0.3; animation: drift 20s infinite linear; }
+  @keyframes drift { from { left: -100px; } to { left: 100%; } }
+
+  .cake-icon { font-size: 4rem; margin-bottom: 1rem; animation: float 3s infinite ease-in-out; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+</style>
+</head>
+<body>
+
+<div class="page active" id="p1">
+  <div class="cake-icon">🎂</div>
+  <h1>Happy 26th Birthday!</h1>
+  <p>Alles Liebe zum Geburtstag, mein Schatz! ❤️</p>
+  <p style="font-size: 0.9rem; margin-top: 5px;">10. April 2025</p>
+  
+  <div class="envelope-wrapper" id="envelope" onclick="this.classList.toggle('open')">
+    <div class="envelope-flap"></div>
+    <div class="letter">
+      <p>Seit dem 22.11.24 machst du mich zum glücklichsten Menschen. Ich liebe dich! 💌</p>
+    </div>
+  </div>
+  
+  <p style="font-size: 0.8rem; color: #888; margin-top: 2rem;">(Klick auf den Brief zum Öffnen)</p>
+  <button class="btn-next" onclick="showPage('p2')">Weiter →</button>
+</div>
+
+<div class="page" id="p2">
+  <div class="heart-float">🏠❤️</div>
+  <h2>Unser Zuhause</h2>
+  <div class="home-box">
+    <p>Seit Januar wohnen wir nun zusammen. Auch wenn noch nicht jede Lampe hängt und noch nicht alles perfekt ist...</p>
+    <br>
+    <p><strong>...ist es mit dir zusammen einfach perfekt.</strong></p>
+    <p>Es ist so wunderschön, jeden Tag neben dir aufzuwachen. 🥂</p>
+  </div>
+  <button class="btn-next" onclick="showPage('p3')">Unsere Reisepläne ✈️</button>
+</div>
+
+<div class="page" id="p3">
+  <div class="cloud" style="top: 10%; animation-delay: 0s;">☁️</div>
+  <div class="cloud" style="top: 30%; animation-delay: -5s;">☁️</div>
+  
+  <div id="airplane">✈️<span style="font-size: 0.8rem; background: white; padding: 2px 8px; border-radius: 10px; border: 1px solid #ccc;">Wir zwei</span></div>
+  
+  <h2>Vorfreude pur!</h2>
+  <p>Im Mai geht es nach <strong>Kreta</strong> 🇬🇷</p>
+  <p>...und ich kann es kaum erwarten, mit dir die Welt zu entdecken (egal auf welchen Kontinent es uns noch verschlägt! 🌍).</p>
+  
+  <div style="margin-top: 3rem;">
+    <p>Freust du dich schon?</p>
+    <button class="btn-next" onclick="startFlight()">JAAA! 😍</button>
+  </div>
+  
+  <p id="travel-msg" style="margin-top: 2rem; opacity: 0; color: var(--secondary); font-weight: bold;">
+    Abflug Richtung Zukunft! 🛫❤️
+  </p>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function startFlight() {
+  document.getElementById('p3').classList.add('fly');
+  document.getElementById('travel-msg').style.opacity = '1';
+  
+  // Kleiner Konfetti-Effekt-Ersatz
+  setTimeout(() => {
+    alert("Ich liebe dich! Auf ein tolles neues Lebensjahr! ❤️⚽️");
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
