@@ -270,6 +270,114 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
+  /* Team-Button */
+  .team-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 480px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--terracotta), #d4895e);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(196, 120, 90, 0.4);
+    animation: pulseGlow 2.5s ease-in-out infinite;
+  }
+  .team-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 28px rgba(196, 120, 90, 0.5); }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(196, 120, 90, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(196, 120, 90, 0.7); }
+  }
+
+  /* Popup Overlay */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 36, 24, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeIn 0.3s ease;
+  }
+  .popup-overlay.open { display: flex; }
+
+  .popup-box {
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 2rem 1.8rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 20px 60px rgba(44, 36, 24, 0.25);
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    background: none; border: none;
+    font-size: 1.3rem; cursor: pointer;
+    color: var(--text-soft);
+    transition: color 0.2s;
+  }
+  .popup-close:hover { color: var(--text); }
+
+  .glove-anim {
+    font-size: 3.5rem;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    animation: punch 1.2s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  @keyframes punch {
+    0%   { transform: translateX(0) rotate(-10deg); }
+    30%  { transform: translateX(18px) rotate(5deg) scale(1.1); }
+    50%  { transform: translateX(0) rotate(-10deg); }
+    100% { transform: translateX(0) rotate(-10deg); }
+  }
+
+  .popup-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .popup-title em { color: var(--terracotta); font-style: italic; }
+
+  .popup-text {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .popup-photo {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    max-height: 100%;
+    margin-top: 0.5rem;
+    display: block;
+  }
+ 
   /* Foto-Styling */
   .option-photo {
     width: 100%;
@@ -338,7 +446,7 @@
       <div class="event-detail">🚣 Mehr Crew, mehr Spaß, mehr Chaos — zusammen mit Maria</div>
       <div class="event-location">📍 Bootsverleih Leipzig</div>
       <a class="option-link" href="https://www.bootsverleih-leipzig.de/" target="_blank">→ bootsverleih-leipzig.de</a>
-      <img src="../M+B.jpeg" alt="Wir beim Wandern" class="option-photo" />
+      <img src="../images/M+B.jpeg" alt="Wir beim Wandern" class="option-photo" />
     </div>
 
     <button class="back-btn" onclick="showPage('page2')">← andere Wahl treffen</button>
@@ -351,6 +459,10 @@
     <p class="choice-label" style="margin-top:1rem;">Du hast gewählt:</p>
     <h1 class="section-title">🎤 Kneipenquiz</h1>
     <p class="section-intro">Hier sind alle Termine — such dir deinen Lieblingsabend aus!</p>
+
+    <button class="team-btn" onclick="document.getElementById('teamPopup').classList.add('open')">
+      🥊 Klick hier
+    </button>
 
     <div class="option-block">
       <span class="tag">Di. 8. April</span>
@@ -472,6 +584,17 @@
     </div>
 
     <button class="back-btn" onclick="showPage('page2')">← andere Wahl treffen</button>
+  </div>
+</div>
+
+ <!-- TEAM POPUP -->
+<div class="popup-overlay" id="teamPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('teamPopup').classList.remove('open')">✕</button>
+    <span class="glove-anim">🥊</span>
+    <h2 class="popup-title">Wir sind ein<br><em>unschlagbares Team!</em></h2>
+    <p class="popup-text">Am besten gehen wir zu dritt — du, ich & Maria. Zusammen sind wir unaufhaltbar. 💪</p>
+    <img src="../images/BMC.jpeg" alt="Wir drei 💪" class="popup-photo" />
   </div>
 </div>
 
