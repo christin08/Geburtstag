@@ -451,6 +451,72 @@
     to { transform: scale(1); }
   }
 
+  /* Erinnerungs-Button */
+  .memory-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 480px;
+    padding: 0.9rem 1.5rem;
+    margin-top: 0.5rem;
+    background: var(--warm);
+    color: var(--terracotta);
+    border: 2px solid var(--blush);
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .memory-btn:hover { background: var(--blush); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,120,90,0.2); }
+
+  /* Polaroid Pinnwand */
+  .polaroid-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 1.5rem;
+  }
+
+  .polaroid {
+    background: var(--white);
+    padding: 10px 10px 36px;
+    box-shadow: 0 6px 20px rgba(44,36,24,0.13);
+    border-radius: 3px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .polaroid:nth-child(odd)  { transform: rotate(-2.5deg); animation: floatP1 4s ease-in-out infinite; }
+  .polaroid:nth-child(even) { transform: rotate(2deg);    animation: floatP2 4.5s ease-in-out infinite; }
+  .polaroid:hover { transform: rotate(0deg) scale(1.05) !important; box-shadow: 0 12px 32px rgba(44,36,24,0.18); z-index: 10; }
+
+  @keyframes floatP1 { 0%,100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+  @keyframes floatP2 { 0%,100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+
+  .polaroid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 1px;
+  }
+
+  .polaroid-caption {
+    position: absolute;
+    bottom: 7px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-soft);
+    font-family: 'Segoe Script', 'Comic Sans MS', cursive;
+  }
+
+
 </style>
 </head>
 <body>
@@ -649,6 +715,8 @@
       <a class="option-link" href="https://www.tiktok.com/@carolain_doh/video/7543512798253387030" target="_blank">Das hat mich überzeugt 😁</a>
     </div>
 
+    <button class="memory-btn" onclick="showPage('pageMemory')">📸 Unsere Erinnerungen ansehen</button>
+
     <button class="back-btn" onclick="showPage('page2')">← andere Wahl treffen</button>
   </div>
 </div>
@@ -661,6 +729,51 @@
     <h2 class="popup-title">Wir sind ein<br><em>unschlagbares Team!</em></h2>
     <p class="popup-text">Am besten gehen wir zu dritt — du, ich & Maria. Zusammen sind wir unaufhaltbar. 💪</p>
     <img src="../images/BMC.jpeg" alt="Wir drei 💪" class="popup-photo" />
+  </div>
+</div>
+
+<!-- PAGE ERINNERUNGEN -->
+<div class="page" id="pageMemory">
+  <div class="scroll-area">
+    <p class="choice-label" style="margin-top:1rem;">ein Blick zurück</p>
+    <h1 class="section-title">🌸 Unsere Erinnerungen</h1>
+    <p class="section-intro">ein paar Momente, die ich nie vergesse 💛</p>
+
+    <div class="polaroid-grid">
+
+      <div class="polaroid">
+        <img src="../images/M1.jpeg" alt="Erinnerung 1" />
+        <span class="polaroid-caption">Sommer 2022</span>
+      </div>
+
+      <div class="polaroid">
+        <img src="../images/M2.jpeg" alt="Erinnerung 2" />
+        <span class="polaroid-caption">Festival ✨</span>
+      </div>
+
+      <div class="polaroid">
+        <img src="../images/M3.jpeg" alt="Erinnerung 3" />
+        <span class="polaroid-caption">unser Lieblingsort</span>
+      </div>
+
+      <div class="polaroid">
+        <img src="../images/M4.jpeg" alt="Erinnerung 4" />
+        <span class="polaroid-caption">immer am lachen 😄</span>
+      </div>
+
+      <div class="polaroid">
+        <img src="../images/M5.jpeg" alt="Erinnerung 5" />
+        <span class="polaroid-caption">so ein schöner Tag</span>
+      </div>
+
+      <div class="polaroid">
+        <img src="../images/M6.jpeg" alt="Erinnerung 6" />
+        <span class="polaroid-caption">beste Freundinnen 🌸</span>
+      </div>
+
+    </div>
+
+    <button class="back-btn" onclick="history.go(-1) || showPage('page2')">← zurück</button>
   </div>
 </div>
 
