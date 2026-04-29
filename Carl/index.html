@@ -128,7 +128,7 @@ canvas#skiCanvas{display:block;width:100%;cursor:pointer;border-radius:4px}
 /* ── PAGE 7 · MEMORY ── */
 #p7{max-width:620px;width:100%;padding:2rem 2rem 6rem}
 .mem-intro{font-size:.85rem;color:rgba(244,240,235,.4);margin:.5rem 0 1.5rem;line-height:1.6}
-.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%}
+.mem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%}
 .mem-card{aspect-ratio:1;background:var(--charcoal);border:1px solid var(--border);border-radius:6px;cursor:pointer;perspective:600px;transition:transform .15s}
 .mem-card:hover:not(.flipped):not(.matched){transform:scale(1.05);border-color:rgba(201,168,76,.4)}
 .mem-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .4s}
@@ -190,9 +190,9 @@ canvas#skiCanvas{display:block;width:100%;cursor:pointer;border-radius:4px}
     <p class="page-label fade-in">Freundschaft</p>
     <p class="friendship-text fade-in">
       Manche Menschen kennt man seit dem ersten Kapitel.<br>
-      Du ist einer davon –<br>
-      <em>du warst mein erster Prinz,</em><br>
-      als Kinderprinzenpaar.<br>
+      Du ist einer davon!<br>
+      <em>Du warst mein erster Prinz,</em><br>
+      als Kinderprinzenpaar in Werben.<br>
       Durch Höhen und Tiefen, durch Jahre und Jahrzehnte.<br>
       Ein Freund mit einem großen Herz,<br>der immer da ist, wenn es zählt.
     </p>
@@ -213,8 +213,8 @@ canvas#skiCanvas{display:block;width:100%;cursor:pointer;border-radius:4px}
   <!-- PAGE 5 · SKI ANIMATION -->
   <div class="page" id="p5">
     <div class="ski-intro fade-in">
-      <p class="page-label" style="margin-bottom:.75rem">Auf der Piste</p>
-      <p>Zusammen den Hang runter – <em>immer.</em></p>
+      <p class="page-label" style="margin-bottom:.75rem">Auch auf der Piste sind wir ein super Team!</p>
+      <p>Zusammen den Hang runter.</p>
     </div>
     <canvas id="skiCanvas" class="fade-in"></canvas>
     <div class="ski-hint fade-in">
@@ -234,7 +234,7 @@ canvas#skiCanvas{display:block;width:100%;cursor:pointer;border-radius:4px}
       <span>Paare: <b id="memPairs">0</b>/8</span>
       <button class="mem-rbtn" onclick="initMem()">Neu mischen ↺</button>
     </div>
-    <div class="mem-win" id="memWin"><p>Perfekt – Carl hätte das genauso schnell geschafft. 🏆</p></div>
+    <div class="mem-win" id="memWin"><p>Perfekt – Du hast es geschafft. 🏆</p></div>
   </div>
 
   <!-- PAGE 8 · FINAL -->
