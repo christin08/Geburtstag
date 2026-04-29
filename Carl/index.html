@@ -74,7 +74,7 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--off-wh
 #p3{padding:1.5rem 1.5rem 6rem;justify-content:flex-start;overflow-y:auto}
 #p3::-webkit-scrollbar{width:3px}
 #p3::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:900px;margin:0 auto}
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;max-width:900px;margin:0 auto}
 .photo-slot{position:relative;background:var(--charcoal);border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s}
 .photo-slot:hover{transform:scale(1.025);border-color:var(--gold)}
 .photo-slot::before{content:'';display:block;padding-top:100%}
@@ -85,21 +85,6 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--off-wh
 .photo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(244,240,235,.2)}
 .photo-placeholder svg{width:24px;height:24px;opacity:.4}
 .photo-placeholder span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
-
-/* ── PAGE 4 · TRAITS ── */
-#p4{padding:2rem 2rem 6rem;max-width:940px;width:100%}
-.traits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:1.5rem;width:100%}
-@media(min-width:700px){.traits-grid{grid-template-columns:repeat(4,1fr)}}
-.trait-card{padding:1.5rem 1.2rem;background:var(--charcoal);border:1px solid var(--border);border-radius:4px;cursor:pointer;transition:background .3s,transform .2s}
-.trait-card:hover{background:#252525;transform:translateY(-2px)}
-.trait-card.active{background:#2a2418;border-color:rgba(201,168,76,.4)}
-.trait-icon{font-size:1.5rem;margin-bottom:.8rem;display:block;transition:transform .3s}
-.trait-card:hover .trait-icon{transform:scale(1.2) rotate(10deg)}
-.trait-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;margin-bottom:.4rem;color:var(--gold-light)}
-.trait-desc{font-size:.8rem;color:rgba(244,240,235,.45);line-height:1.55}
-.trait-extra{max-height:0;overflow:hidden;transition:max-height .5s;font-size:.78rem;color:rgba(201,168,76,.8);line-height:1.55}
-.trait-card.active .trait-extra{max-height:100px;margin-top:.6rem}
-.trait-tip{display:inline-block;font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;background:rgba(201,168,76,.08);color:var(--gold);padding:2px 7px;border-radius:2px;margin-top:.6rem;opacity:.55}
 
 /* ── PAGE 5 · SKI ── */
 #p5{padding:1.5rem 1.5rem 6rem;justify-content:flex-start;max-width:100%;width:100%}
@@ -112,23 +97,11 @@ canvas#skiCanvas{display:block;width:100%;cursor:pointer;border-radius:4px}
 .ski-restart{background:transparent;border:1px solid var(--border);color:rgba(244,240,235,.35);padding:.4rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-top:.5rem;transition:all .3s}
 .ski-restart:hover{border-color:var(--gold);color:var(--gold)}
 
-/* ── PAGE 6 · TIMELINE ── */
-#p6{max-width:700px;width:100%;padding:2rem 2rem 6rem;justify-content:flex-start;overflow-y:auto}
-#p6::-webkit-scrollbar{width:3px}
-#p6::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.timeline{position:relative;padding-left:2rem;margin-top:1.5rem;width:100%}
-.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),transparent)}
-.tl-item{position:relative;padding-bottom:2rem;cursor:pointer}
-.tl-item:hover .tl-text{color:var(--off-white)}
-.tl-dot{position:absolute;left:-2rem;top:5px;width:8px;height:8px;background:var(--gold);border-radius:50%;transform:translateX(-3.5px);transition:transform .2s,box-shadow .2s}
-.tl-item:hover .tl-dot{transform:translateX(-3.5px) scale(1.5);box-shadow:0 0 10px rgba(201,168,76,.5)}
-.tl-year{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-.tl-text{font-size:.95rem;color:rgba(244,240,235,.65);line-height:1.6;transition:color .3s}
 
 /* ── PAGE 7 · MEMORY ── */
 #p7{max-width:620px;width:100%;padding:2rem 2rem 6rem}
 .mem-intro{font-size:.85rem;color:rgba(244,240,235,.4);margin:.5rem 0 1.5rem;line-height:1.6}
-.mem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%}
+.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%}
 .mem-card{aspect-ratio:1;background:var(--charcoal);border:1px solid var(--border);border-radius:6px;cursor:pointer;perspective:600px;transition:transform .15s}
 .mem-card:hover:not(.flipped):not(.matched){transform:scale(1.05);border-color:rgba(201,168,76,.4)}
 .mem-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .4s}
