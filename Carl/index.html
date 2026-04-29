@@ -70,7 +70,7 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--off-wh
 .friendship-text{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,2.2rem);font-weight:400;line-height:1.6}
 .friendship-text em{font-style:italic;color:var(--gold-light)}
 
-/* ── PAGE 3 · PHOTOS ── */
+/* ── PAGE 3 · PHOTOS ──
 #p3{padding:1.5rem 1.5rem 6rem;justify-content:flex-start;overflow-y:auto}
 #p3::-webkit-scrollbar{width:3px}
 #p3::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
@@ -82,6 +82,20 @@ html,body{height:100%;overflow:hidden;background:var(--black);color:var(--off-wh
 .photo-slot:nth-child(5){grid-column:span 2}.photo-slot:nth-child(5)::before{padding-top:56%}
 .photo-slot:nth-child(8){grid-column:span 2}.photo-slot:nth-child(8)::before{padding-top:56%}
 .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(244,240,235,.2)}
+.photo-placeholder svg{width:24px;height:24px;opacity:.4}
+.photo-placeholder span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase} */
+
+/* ── PAGE 3 · PHOTOS ── */
+#p3{padding:1.5rem 1.5rem 6rem;justify-content:flex-start;overflow-y:auto}
+#p3::-webkit-scrollbar{width:3px}
+#p3::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;max-width:900px;margin:0 auto}
+.photo-slot{position:relative;background:var(--charcoal);border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s}
+.photo-slot:hover{transform:scale(1.025);border-color:var(--gold)}
+.photo-slot::before{content:'';display:block;padding-top:75%}
+.photo-slot:nth-child(1){grid-column:span 2}.photo-slot:nth-child(1)::before{padding-top:50%}
+.photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
 .photo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(244,240,235,.2)}
 .photo-placeholder svg{width:24px;height:24px;opacity:.4}
 .photo-placeholder span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
